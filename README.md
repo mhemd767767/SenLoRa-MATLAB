@@ -1,6 +1,6 @@
 # SenLoRa-inspired MATLAB — essential files
 
-A compact MATLAB implementation of integrated LoRa **communication and sensing**, inspired by the SenLoRa paper. The package is **files only**: the five core `.m` files and practical examples. No paper-figure scripts, Python audits, old receiver versions, or GitHub-specific setup are included.
+A compact MATLAB implementation of integrated LoRa **communication and sensing**, inspired by the SenLoRa paper. The package is **files only**: the five core `.m` files and practical examples. 
 
 **This is an independent research implementation, not official SenLoRa code or a drop-in LoRaWAN receiver.** It is built on the original LoRaPHY implementation by jkadbear. The original hard-only decoding entry points have been removed; the remaining shared synchronization/PHY helpers are still needed by the soft receiver.
 
