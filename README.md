@@ -60,4 +60,4 @@ The examples are independent; run any one of them. The 18-BPM example takes long
 
 The original `LoRaPHY.m` was published by **jkadbear**, with an MIT License notice, at <https://github.com/jkadbear/LoRaPHY>, corresponding to *From Demodulation to Decoding: Toward Complete LoRa PHY Understanding and Implementation* (Xu et al.). 
 
-This package is **inspired by** *SenLoRa: Integrated Sensing and Communication with Ambient LoRa* (Wang et al., Proc. ACM IMWUT, 2025). It is not affiliated with the SenLoRa authors. The license terms for any new contribution must be decided by its copyright owner before publication; the original LoRaPHY MIT license must be preserved.
+This package is **inspired by** *SenLoRa: Integrated Sensing and Communication with Ambient LoRa* (Wang et al., Proc. ACM IMWUT, 2025). It is not affiliated with the SenLoRa authors. 
