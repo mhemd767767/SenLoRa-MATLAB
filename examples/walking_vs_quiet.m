@@ -15,9 +15,10 @@ phy.cr = 4;
 phy.crc = 1;
 
 opts = struct('mode','iq','adaptive',false,'duration_s',30, ...
-    'interval_s',1.0,'snr_db',20,'snr_reference','received', ...
+    'interval_s',1.0,'snr_db',-4,'snr_reference','received', ...
     'cfo_hz',30,'max_iter',5,'seed',2026,'max_bursts',0, ...
     'throw_receiver_errors',true);
+fprintf('Walking vs quiet: received SNR = %.1f dB\n', opts.snr_db);
 
 % The quiet channel remains static after the first observation.
 quiet_opts = opts;
@@ -51,7 +52,7 @@ plot(walk_act.times_s,walk_act.amplitude,'o-','LineWidth',1.2);
 grid on;
 xlabel('Packet time (s)'); ylabel('Mean confidence-chirp |CSI|');
 legend('Quiet','Walking','Location','best');
-title('Human activity sensed from soft-decoded LoRa IQ');
+title(sprintf('Human activity from soft LoRa CSI (SNR %.1f dB)', opts.snr_db));
 
 assert(quiet.usable_packets>=10 && walk.usable_packets>=10, ...
     'Insufficient usable CSI packets.');

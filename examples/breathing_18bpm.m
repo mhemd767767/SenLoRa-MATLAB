@@ -38,7 +38,7 @@ opts.walk_end_s = 0;                         % Breathing starts at t = 0
 opts.breath_end_s = opts.duration_s + 1;     % Breathing for the entire last packet
 opts.breath_hz = truth_hz;
 opts.breath_m = 0.008;                       % 8-mm displacement assumption
-opts.snr_db = 20;
+opts.snr_db = -4;
 opts.snr_reference = 'received';             % Actual received SNR
 opts.cfo_hz = 30;
 opts.cr = 4;
@@ -123,8 +123,8 @@ if act.respiration_valid
 end
 grid on;
 xlabel('Time (s)'); ylabel('Mean |CSI| / packet');
-title(sprintf('Breathing truth %.1f BPM; estimated %.2f BPM; R^2=%.3f', ...
-    truth_bpm,act.respiration_bpm,act.respiration_r2));
+title(sprintf('Breathing truth %.1f BPM; estimated %.2f BPM; R^2=%.3f; SNR %.1f dB', ...
+    truth_bpm,act.respiration_bpm,act.respiration_r2,opts.snr_db));
 legend('Location','best');
 
 subplot(2,1,2);
@@ -139,7 +139,7 @@ end
 grid on;
 xlabel('Candidate breathing frequency (BPM)');
 ylabel('Sine-fit R^2');
-title('Respiration frequency search (packet timestamps)');
+title(sprintf('Respiration frequency search (received SNR %.1f dB)', opts.snr_db));
 legend('Location','best');
 
 % -------------------------------------------------------------------------

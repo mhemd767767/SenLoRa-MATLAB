@@ -22,9 +22,10 @@ payload = uint8((1:12)');
 tx = phyTx.modulate(phyTx.encode(payload));
 
 % Transmit through a single static path, oscillator offset, and AWGN.
-snr_db = 20;
+snr_db = -4;
 cfo_hz = 30;
 h = 0.85 + 0.10i;
+fprintf('Communication + CSI test: received SNR = %.1f dB\n', snr_db);
 t = (0:numel(tx)-1)'/fs;
 clean = h*tx(:).*exp(1i*2*pi*cfo_hz*t);
 noise_sigma = sqrt(mean(abs(clean).^2)/(2*10^(snr_db/10)));
@@ -55,5 +56,5 @@ plot(csi(1).pilot_indices,abs(csi(1).corrected_csi),'o-','LineWidth',1.3);
 grid on;
 xlabel('Selected payload chirp index');
 ylabel('Estimated |CSI|');
-title('Complex channel estimates from soft-decoded LoRa IQ');
+title(sprintf('Soft-decoded LoRa CSI (received SNR %.1f dB)', snr_db));
 assert(correct,'The soft receiver did not recover the transmitted payload.');
